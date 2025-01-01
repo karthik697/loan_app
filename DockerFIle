@@ -1,0 +1,12 @@
+FROM python:3.9.6-slim-buster
+WORKDIR /Users/chandru/loan_prediction_app/app
+
+COPY requirements.txt ./
+RUN python3 -m pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY  . .
+CMD ["python", "-m", "flask", "--app", "predictions.py", "run", "--host=0.0.0.0"]
+
+
+# docker build -f C:\Users\chandru\loan_prediction_app\DockerFIle  -t loan_app_v1 .  
